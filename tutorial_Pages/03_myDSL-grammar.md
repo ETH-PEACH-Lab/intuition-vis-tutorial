@@ -77,8 +77,6 @@ Here is an example of stack component:
 stack stk1 = {
   structure:[[1],[1,1],[1,1,2]]
   value:[[1],[1,1]]
-  color:[[null]]
-  arrow:[[null]]
 }
 ```
 
@@ -136,10 +134,6 @@ Here is an example of matrix component:
 ```javascript
 matrix mr1 = {
   structure:[[[1,2],[3,4]],[[1,2,3],[3,4]]]
-  value:[[[1,2],[3,4]],[[1,2,3],[3,4]]]
-  color:[[[null,null],[null,null]],[[null,null,null],[null,null]]]
-  arrow:[[[null,null],[null,null]],[[null,null,null],[null,null]]]
-  hidden:[[[null,null],[null,null]],[[null,null,null],[null,null]]]
 }
 ```
 
@@ -160,8 +154,6 @@ graph dfs = {
   edge:[[(n1,n2),(n4,n8)]]
   value:[[n1,n2,n3,n4,n5,n6,n7,n8]]
   color:[[red,null,null,null,null,null,null,null]]
-  arrow:[[red,null,null,null,null,null,null,null]]
-  hidden:[[red,null,null,null,null,null,null,null]]
 }
 ```
 ##### Notice
@@ -181,11 +173,11 @@ show component_name[page_index]
 This is a example of full draw part:
 ```javascript
 draw:
-page p:=[0,1] {
+page p = [0,1] {
 show component_name_1[p + 1]
 show component_name_2[p]
 }
-page i:=[2,3] {
+page i = [2,3] {
 show component_name_1[i - 1]
 show component_name_2[i]
 }
