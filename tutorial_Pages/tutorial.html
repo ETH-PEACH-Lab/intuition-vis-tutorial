@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GUI Tool Documentation</title>
+    <!-- Add any CSS for styling -->
+    <link rel="stylesheet" href="styles.css" />
+    <!-- Optional: Link to a CSS file -->
+    <style>
+      /* Example styling */
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+        background-color: #f9f9f9;
+      }
+      h2,
+      h3 {
+        color: #333;
+      }
+      p {
+        line-height: 1.6;
+        color: #555;
+      }
+      img {
+        margin: 20px 0;
+        max-width: 100%;
+        height: auto;
+      }
+      .content {
+        max-width: 800px;
+        margin: 0 auto;
+        background: white;
+        padding: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="content">
+      <!-- Converted Markdown Content -->
+      <h2 id="welcome">Welcome!</h2>
+      <h3 id="we-are-happy-you-are-here">We are happy you are here!</h3>
+      <p>
+        Ready to create a variety of algorithm intution visualizations?
+        Intuition-Vis Editor is a visual production tool that combines
+        programming-language-based (PL) and direct-manipulation (DM). We hope
+        that programming instructors can use it to easily make algorithm
+        intuitions.
+      </p>
+      <h2 id="overview">Overview</h2>
+      <p>
+        In this section, we will have a overview of the whole system and see how
+        it works. We will use a easy example to show its work flow.
+      </p>
+      <h3 id="create-an-intuition-for-fibonacci-number">
+        Create an intuition for Fibonacci number
+      </h3>
+      <h4 id="problem-description">problem description</h4>
+      <p>
+        The Fibonacci numbers, commonly denoted F(n) form a sequence, called the
+        Fibonacci sequence, such that each number is the sum of the two
+        preceding ones, starting from 0 and 1. That is,
+      </p>
+      <pre><code>F(0) = 0, F(1) = 1
+F(n) = F(n - 1) + F(n - 2), for n &gt; 1.
+</code></pre>
+      <p>Now let&#39;s make the intution for Fibonacci!</p>
+      <h4 id="code-mydsl-to-make-templates">Code myDSL to make templates</h4>
+      <p>
+        Now, we will make the first page of our intuition visualization.
+        Let&#39;s input some data in <code>Code Editor</code> to describe the
+        data structure of Fabonacci array. We also input some attributes such as
+        <code>color</code>, <code>arrow</code> to describe the style of
+        Fabonacci array.
+      </p>
+      <!-- ![alt text](/pictures/overview_codeEditor1.png)  -->
+      <img src="/pictures/overview_codeEditor1.png" width="500" />
+
+      <p>
+        After enter input of <code>Code Editor</code>, the
+        <code>Mermaid Editor</code> below <code>Code Editor</code> will generate
+        mermaid code automatically. Compared to myDSL, Mermaid Code is a
+        low-level domain specific language to directly render SVG image.
+      </p>
+      <h4 id="interact-with-gui-tool-to-adjust-unit">
+        Interact with GUI-tool to adjust unit
+      </h4>
+      <p>
+        Good! We just make the first page of our Fibonacci intuition. Now,
+        let&#39;s make it more vivid. Let&#39;s color certain units on it to
+        show how a new Fibonacci number is produced. The 4th Fibonacci number
+        <code>3</code> is produced by <code>3 = 1 + 2</code>. Let&#39;s color it
+        and add an arrow to hightlight <code>3</code> is just produced.<br />Click
+        on unit <code>3</code>, the GUI tool will appear. Let&#39;s change the
+        <code>unit color</code> and <code>arrow label</code> with red and
+        current, then click <code>update</code>.
+      </p>
+      <!-- ![alt text](/pictures/overview_gui.png)   -->
+      <img src="/pictures/overview_gui.png" width="500" />
+
+      <p>
+        Now the unit <code>3</code> is updated as our input! Let&#39;s also
+        update <code>1</code> and <code>2</code> likewise.
+      </p>
+      <h4 id="add-and-delete-page">Add and delete page</h4>
+      <p>
+        Great! We have 5 pages now, and we want to add a new page to generate
+        the next Fabonacci number. Let&#39;s click
+        <code>Add a page</code> button on the right-top of GUI-tool to copy the
+        last page.
+      </p>
+      <!-- ![alt text](/pictures/overview_addPage.png)   -->
+      <img src="/pictures/overview_addPage.png" width="500" />
+
+      <h4 id="modify-mermaid-code-when-necessary">
+        Modify mermaid code when necessary
+      </h4>
+      <p>
+        Mermaid code is generated from myDSL automatically. But you can also
+        edit it to make more detailed style-control when necessary.
+      </p>
+      <!-- ![alt text](/pictures/overview_mermaid.png)   -->
+      <img src="/pictures/overview_mermaid.png" width="500" />
+
+      <h4 id="save-your-output">Save your output</h4>
+      <p>
+        Great! Now we have a nice Fibonacci intuion visualization. Let&#39;s
+        click <code>save</code> or <code>export</code> button to save the svg
+        animation for further use.
+      </p>
+      <!-- ![alt text](/pictures/overview_save.png)   -->
+      <img src="/pictures/overview_save.png" width="500" />
+      <h2 id="mydsl">myDSL</h2>
+      <p>
+        In this section, we will introduce myDSL grammar and show how to use
+        myDSL to generate intuition visulization.
+      </p>
+      <h3 id="basic-concepts">Basic Concepts</h3>
+      <p>
+        There are 3 basic concepts: <code>unit</code>,
+        <code>component</code> and <code>page</code>. <code>Unit</code> is the
+        smallest part that can be manipulated, such as each node in a
+        <code>tree</code> diagram. <code>Units</code> form
+        <code>components</code>. Currently, our editor supports 6 types of
+        components: <code>array</code>, <code>linkedlist</code>,
+        <code>tree</code>, <code>stack</code>, <code>matrix</code> and
+        <code>graph</code>. Several <code>components</code> make up a
+        <code>page</code>, and a complete intuition visualization usually has
+        multiple <code>pages</code>.
+      </p>
+      <img src="/pictures/myDSL_concepts.png" width="500" />
+
+      <h3 id="mydsl-grammar">myDSL Grammar</h3>
+      <h4 id="fabonacci-array-examble">Fabonacci Array Examble</h4>
+      <pre><code class="language-javascript">
+data:
+array arr1 = {
+  structure:[[1],[1,1],[1,1,2],[1,1,2,3],[1,1,2,3,5],[1,1,2,3,5,8]]
+  value:[[1],[1,1],[1,1,2],[1,1,2,3],[1,1,2,3]]
+  color:[[null],[null,null],[null,null,null],[null,null,null,null],[null,null,null,null]]
+  arrow:[[null],[null,null],[null,null,null],[null,null,null,null],[null,null,null,null]]
+  hidden:[[false],[false,false],[false,false,false],[false,false,false,false],[false,false,false,false]]
+}
+draw:
+page p:=[0,5] {
+show arr1[p]
+}
+</code></pre>
+      <p>
+        In <code>data</code> part, user describe each component&#39;s
+        <code>structure</code> and other attributes fo several pages. For
+        instance, <code>[1]</code> is the value in page 1, <code>[1,1]</code> is
+        the value in page 2.<br />In <code>draw</code> part, user choose to
+        render which component they describe in <code>data</code> part.
+      </p>
+      <h4 id="grammar-of-different-components">
+        Grammar of Different Components
+      </h4>
+      <h5 id="value-type">Value Type</h5>
+      <p>
+        <code>ID</code>, <code>Number</code> and <code>Boolean</code> type are 3
+        type accepted as input. They are defined by:
+      </p>
+      <pre><code class="language-javascript">// only consists of numeric digits
+Number -&gt; [0-9]:+ 
+
+// must start with alphabet, consists of alphabet and numeric digits 
+ID -&gt; [a-zA-Z0-9\/\\&lt;&gt;#@$&amp;|]:+ 
+
+// be false or true
+Boolean -&gt; false || true
+</code></pre>
+      <h5 id="array">Array</h5>
+      <pre><code class="language-javascript">array array_component_name = {
+structure:[[ID || Number]] //required
+value:[[ID]] // optional, when ther is no value, will copy strucrure value 
+color:[[ID]] // optional
+arrow:[[ID]] // optional
+hidden:[[Boolean]] // optional
+}
+</code></pre>
+      <p>Here is an example of array component:</p>
+      <pre><code class="language-javascript">array arr1 = {
+  structure:[[1],[1,1],[1,1,2]]
+  value:[[1],[1,1]]
+  color:[[null]]
+  arrow:[[null]]
+}
+</code></pre>
+      <h5 id="stack">Stack</h5>
+      <pre><code class="language-javascript">stack stack_component_name = {
+structure:[[ID || Number]] //required
+value:[[ID]] // optional, when ther is no value, will copy strucrure value 
+color:[[ID]] // optional
+arrow:[[ID]] // optional
+hidden:[[Boolean]] // optional
+}
+</code></pre>
+      <p>Here is an example of stack component:</p>
+      <pre><code class="language-javascript">stack stk1 = {
+  structure:[[1],[1,1],[1,1,2]]
+  value:[[1],[1,1]]
+}
+</code></pre>
+      <h5 id="tree">Tree</h5>
+      <pre><code class="language-javascript">tree tree_component_name = {
+structure:[[ID]] //required
+value:[[ID]] // optional, when ther is no value, will copy strucrure value 
+color:[[ID]] // optional
+arrow:[[ID]] // optional
+hidden:[[Boolean]] // optional
+}
+</code></pre>
+      <p>Here is an example of tree component:</p>
+      <pre><code class="language-javascript">tree tr1 = {
+  structure:[[n1],[n1,n2],[n1,n2,n3]]
+  value:[[1],[1,2],[1,2,3]]
+  color:[[null]]
+  arrow:[[null]]
+}
+</code></pre>
+      <h5 id="linkedlist">Linkedlist</h5>
+      <pre><code class="language-javascript">linkedlist linkedlist_component_name = {
+structure:[[ID]] //required
+value:[[ID]] // optional, when ther is no value, will copy strucrure value 
+color:[[ID]] // optional
+arrow:[[ID]] // optional
+hidden:[[Boolean]] // optional
+}
+</code></pre>
+      <p>Here is an example of linkedlist component:</p>
+      <pre><code class="language-javascript">linkedlist li1 = {
+  structure:[[n1],[n1,n2],[n1,n2,n3]]
+  value:[[1],[1,2],[1,2,3]]
+  color:[[null]]
+  arrow:[[null]]
+}
+</code></pre>
+      <h5 id="matrix">Matrix</h5>
+      <pre><code class="language-javascript">linkedlist linkedlist_component_name = {
+structure:[[[ID || Number]]] //required
+value:[[[ID]]] // optional, when ther is no value, will copy strucrure value 
+color:[[[ID]]] // optional
+arrow:[[[ID]]] // optional
+hidden:[[[Boolean]]] // optional
+}
+</code></pre>
+      <p>Here is an example of matrix component:</p>
+      <pre><code class="language-javascript">matrix mr1 = {
+  structure:[[[1,2],[3,4]],[[1,2,3],[3,4]]]
+}
+</code></pre>
+      <h5 id="graph">Graph</h5>
+      <pre><code class="language-javascript">graph graph_component_name = {
+id:[[ID]] //required
+edge:[[(ID,ID)]] // required
+color:[[ID]] // optional
+arrow:[[ID]] // optional
+hidden:[[ID]] // optional
+}
+</code></pre>
+      <p>Here is an example of graph component:</p>
+      <pre><code class="language-javascript">graph dfs = {
+  id:[[n1,n2,n3,n4,n5,n6,n7,n8]]
+  edge:[[(n1,n2),(n4,n8)]]
+  value:[[n1,n2,n3,n4,n5,n6,n7,n8]]
+  color:[[red,null,null,null,null,null,null,null]]
+}
+</code></pre>
+      <h5 id="notice">Notice</h5>
+      <ul>
+        <li>
+          <code>null</code> is a reserved key word for
+          <code>arrow</code> attribute, it means no arrow on this unit.
+        </li>
+        <li>
+          <code>empty</code> is a reserved key word for
+          <code>arrow</code> attribute, it means a arrow without label.<img
+            src="/pictures/myDSL_empty_arrow.png"
+            width="300"
+          />
+        </li>
+      </ul>
+      <h4 id="grammar-of-draw">Grammar of Draw</h4>
+      <p>
+        For each page, user need to explicitely decide which component to be
+        rendered on this page. First, user needs to choose page range by
+        <code>page page_index := [Number1, Number2]</code>. The range starts
+        with 0 and includes the start and end.<br />Then, user needs to choose
+        to render which component using
+        <code>show component_name[page_index]</code>. Here user can also use
+        expression with <code>page_index</code> to choose component.
+      </p>
+      <pre><code class="language-javascript">page page_index := [Number, Number] {
+show component_name[page_index]
+}
+</code></pre>
+      <p>This is a example of full draw part:</p>
+      <pre><code class="language-javascript">draw:
+page p = [0,1] {
+show component_name_1[p + 1]
+show component_name_2[p]
+}
+page i = [2,3] {
+show component_name_1[i - 1]
+show component_name_2[i]
+}
+</code></pre>
+      <h5 id="notice-1">Notice</h5>
+      <p>
+        For <code>page_index expression</code>, only simple ones such as
+        <code>p + 2</code> , <code>p - 1</code> is supported now. Always keep
+        the coefficient before <code>page_index</code> as 1. Such as
+        <code>1 - p </code>, <code>2 * p</code> are not supported so far.
+      </p>
+
+      <h2 id="gui-tool">GUI-tool</h2>
+      <p>
+        Besides <code>myDSL</code> control flow, our Intuition-editor also
+        enables users to use the GUI-tool for direct operations.
+      </p>
+
+      <h3 id="unit-update">Unit Update</h3>
+      <p>
+        Click on the unit generated by myDSL, and the GUI-tool will locate this
+        unit directly. Input a new attribute value and click the
+        <code>Update</code> button.
+      </p>
+      <img
+        src="/pictures/GUI-tool_units.png"
+        alt="GUI Tool Units"
+        width="500"
+      />
+
+      <h3 id="adddelete-page">Add/Delete Page</h3>
+      <p>
+        Go to the end of the current intuition visualization and click on
+        <code>add a page</code> to copy the current page and add it to the
+        end.<br />
+        <code>delete page</code> can delete the last page of the current
+        intuition visualization.
+      </p>
+      <img
+        src="/pictures/GUI_tool_add_page.png"
+        alt="Add/Delete Page"
+        width="500"
+      />
+    </div>
+  </body>
+</html>
